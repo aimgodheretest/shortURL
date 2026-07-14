@@ -30,7 +30,7 @@ async function getshortURL(req, res) {
       },
     },
     {
-      new: true,
+      returnDocument: "after",
     },
   );
 
