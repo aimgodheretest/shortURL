@@ -12,7 +12,9 @@ async function generateNewShortURL(req, res) {
     visitHistory: [],
   });
 
-  return res.json({ id: shortID });
+  return res.render("home", {
+    id: shortID,
+  });
 }
 
 async function getshortURL(req, res) {
@@ -37,7 +39,16 @@ async function getshortURL(req, res) {
   return res.redirect(entry.redirectURL);
 }
 
+async function getAllUrl(req, res) {
+  const allUrls = await URL.find({});
+
+  return res.render("home", {
+    urls: allUrls,
+  });
+}
+
 module.exports = {
   generateNewShortURL,
   getshortURL,
+  getAllUrl,
 };
